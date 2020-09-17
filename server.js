@@ -1,10 +1,14 @@
 const express = require('express');
+const path = require('path');
+
+const categoryRoute = require('./routes/category.route');
 
 const app = express();
 
-app.get('/', (request, response) => {
-    response.send("Hello world from server");
-})
+app.use(express.static(path.join(`${__dirname}/dist/shoppingCartBackend`)));
+app.use('/api/categories', categoryRoute);
 
-app.listen(3000);
-console.log("Server running on port 3000");
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+});
