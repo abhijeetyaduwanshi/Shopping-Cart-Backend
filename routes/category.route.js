@@ -7,6 +7,8 @@ const table = "categories";
 
 /**
  * get all the categories from categories table
+ * 
+ * @param  {/} base
  */
 categoryRoute.route('/').get((request, response) => {
     db.collection(table).find((error, docs) => {
