@@ -11,7 +11,7 @@ const table = "categories";
  * @param  {/} base
  */
 navigationRoute.route('/').get((request, response) => {
-    db.collection(table).find({}, {categoryId: 1, categoryTitle: 1}, (error, docs) => {
+    db.collection(table).find({}, {categoryClass: 1, categoryTitle: 1}, (error, docs) => {
         if (error) {
             return next(error);
         } else {
