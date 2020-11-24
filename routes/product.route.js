@@ -24,14 +24,14 @@ productRoute.route('/:category').get((request, response) => {
 /**
  * get a product based on its id and category which it belongs to
  * 
- * @param  {id} id of the product
  * @param  {category} name of the category
+ * @param  {id} id of the product
  */
-productRoute.route('/:id/:category').get((request, response) => {
-    const id = request.params.id;
+productRoute.route('/:category/:id').get((request, response) => {
     const table = request.params.category;
+    const id = request.params.id;
 
-    db.collection(table).findOne({_id: mongojs.ObjectId(id)}, {productTitle: 1, productPrice: 1, productImage: 1}, (error, docs) => {
+    db.collection(table).findOne({_id: mongojs.ObjectId(id)}, {}, (error, docs) => {
         if (error) {
             return next(error);
         } else {
